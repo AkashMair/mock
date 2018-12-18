@@ -1,0 +1,58 @@
+<button (click)= "logout()">Logout</button>
+<h1>You are logged in {{auth.user?.email}}</h1>
+
+<form #homeForm="ngForm" (ngSubmit)="upload(homeForm.value)">
+  <input
+    ngModel
+    type ="date"
+    name = "date"
+    id="inputDate"
+    placeholder="Date"
+    required
+  >
+
+  <input
+    ngModel
+    type ="title"
+    name = "title"
+    id="inputTitle"
+    placeholder="Title"
+    required
+  >
+
+  <input
+    ngModel
+    type ="description"
+    name = "description"
+    id="inputDescription"
+    placeholder="description"
+    required
+  >
+
+  <input
+    ngModel
+    type ="rating"
+    name = "rating"
+    id="inputRating"
+    placeholder="Rating"
+    required
+  >
+
+
+
+<button type="submit">Submit</button>
+</form>
+
+<div  *ngFor="let a of nologyDetail | async">
+
+<ul>
+    <li class="text">
+      {{a.date}}
+      {{a.title}}
+      {{a.description}}
+      {{a.rating}}
+    </li>
+  </ul>
+  <button (click)="delete(a)">Delete</button>
+
+</div>
