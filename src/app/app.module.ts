@@ -6,14 +6,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from "@angular/forms"
 import { environment } from '../environments/environment';
-import { AuthGuardService } from '../app/auth-guard.service'
-
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from "@angular/router";
+import { AuthGuardService } from './services/authguard.service';
 
 @NgModule({
   imports: [
@@ -25,12 +23,10 @@ import { RouterModule } from "@angular/router";
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     RouterModule.forRoot([
  //auth needed
- { path: "home", component: HomeComponent, canActivate: [AuthGuardService]},
+      { path: "", component: HomeComponent, canActivate: [AuthGuardService]},
       //not needed
       { path: "register", component: RegisterComponent},
       { path: "login", component: LoginComponent},
-     
-
     ]),
   ],
 

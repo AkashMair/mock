@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FirebaseAuthService } from "../services/firebase-auth.service";
-import { SessionService, INologyDetails } from "../services/session.service";
+import { SessionService, INologyDetails, INologyDetailsID } from "../services/session.service";
 
 
 @Component({
@@ -30,7 +30,18 @@ export class HomeComponent implements OnInit {
     this.sessionService.upload(nologyDetail);
   }
 
-  delete(nologyDetail:INologyDetails) {
+  update(nologyDetail:INologyDetailsID){
+    // console.log(nologyDetail.id)
+    this.sessionService.update(nologyDetail);
+    
+  }
+
+  showInputs(nologyDetail:INologyDetailsID){
+    this.sessionService.showInputs(nologyDetail);
+  }
+
+
+  delete(nologyDetail:INologyDetailsID) {
     this.sessionService.delete(nologyDetail)
   }
 

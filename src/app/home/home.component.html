@@ -10,7 +10,6 @@
     placeholder="Date"
     required
   >
-
   <input
     ngModel
     type ="title"
@@ -19,7 +18,6 @@
     placeholder="Title"
     required
   >
-
   <input
     ngModel
     type ="description"
@@ -28,7 +26,6 @@
     placeholder="description"
     required
   >
-
   <input
     ngModel
     type ="rating"
@@ -37,22 +34,31 @@
     placeholder="Rating"
     required
   >
-
-
-
+  
 <button type="submit">Submit</button>
 </form>
 
 <div  *ngFor="let a of nologyDetail | async">
 
 <ul>
-    <li class="text">
-      {{a.date}}
-      {{a.title}}
-      {{a.description}}
-      {{a.rating}}
-    </li>
+    <li class="text">{{a.date}}</li>
+    <li class="text">{{a.title}}</li>
+    <li class="text">{{a.description}}</li>
+    <li class="text">{{a.rating}}</li>
   </ul>
   <button (click)="delete(a)">Delete</button>
+  <button (click)="showInputs(a)">Edit info</button> 
+
+<form #updateForm="ngForm" (ngSubmit)="update(a)" [hidden]="a.hideEdit">
+  <ul>
+    <li><input name="date" [(ngModel)]="a.date" value="a.date"></li>
+    <li><input name="title" [(ngModel)]="a.title" value="a.title"></li>
+    <li><input name="description" [(ngModel)]="a.description" value="a.description"></li>
+    <li><input name="rating" [(ngModel)]="a.rating" value="a.rating"></li>
+
+  </ul>
+  <button type="submit">Update</button>
+</form>
+
 
 </div>

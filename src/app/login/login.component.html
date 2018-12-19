@@ -3,13 +3,19 @@
   <label for="inputEmail">Email address</label>
     <input 
       ngModel
+      #emailAddress="ngModel"
       type ="email"
       name = "email"
       id="inputEmail"
       placeholder="Email Address"
       required
       autofocus
+      email
     >
+    <div *ngIf = "emailAddress.invalid && emailAddress.touched">
+      <small *ngIf="emailAddress.errors.required" >Email is required</small>
+      <small *ngIf="emailAddress.errors.email">Email is invalid</small>
+    </div>
   <label for="inputPassword">Email address</label>
     <input
       ngModel
@@ -18,7 +24,14 @@
       id="inputPassword"
       placeholder="Password"
       required
+      #passwordSecure="ngModel"
+      minlength="6"
     >
+    <div *ngIf="passwordSecure.invalid && passwordSecure.touched">
+      <small *ngIf = "passwordSecure.errors.required">Password required</small>
+      <small *ngIf = "passwordSecure.errors.minlength">Password must be at least 6 characters</small>
+      <small *ngIf = "passwordSecure.errors.pattern">Password must contain  a combination of uppercase, lowercase and numbers</small>
+    </div>
 
     <button type="submit">Login</button>
     <p>No account yet? <a routerLink="/register">Create an account</a></p>

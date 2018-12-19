@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router'; //makes you use the canActivate function 
+import { Router } from '@angular/router'; //makes you use the canActivate function 
 import { first, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate{
+export class AuthGuardService{
 
   constructor(private afAuth: AngularFireAuth,
               private router:Router) { }
@@ -20,7 +20,7 @@ export class AuthGuardService implements CanActivate{
           if (user) return true;
           else 
           {
-            this.router.navigate[('login')];
+            this.router.navigate(['/login']);
           return false
       }
           }),

@@ -13,7 +13,7 @@ export class FirebaseAuthService {
   constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
   get user(){
-    return this.afAuth.auth.currentUser;
+    return this.afAuth.auth.currentUser;//?
   }
 
   register(email, password){
