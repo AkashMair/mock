@@ -20,7 +20,7 @@ export interface INologyDetailsID extends INologyDetails{ id:string }
 })
 export class SessionService {
 
-  // user;
+  user;
 
   // nologyDetailsCollection: AngularFirestoreCollection<INologyDetails>;
   // nologyDetail:Observable<INologyDetails>;
